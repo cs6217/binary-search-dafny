@@ -1,0 +1,15 @@
+# Automatically generate files via TLA+ toolbox
+
+*.old
+*.out
+*.tex
+*.pdf
+*.dvi
+*.fp
+*.st
+tlaplus/states/
+
+# Dafny-generated
+*.dll
+*.json
+mkdir 
