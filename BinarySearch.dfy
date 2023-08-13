@@ -12,9 +12,23 @@ predicate sorted(a: array<int>)
 // Q: Why the type of `a` is `array<int>`?
 method BinarySearchInt32(a: array<int>, value: int) returns (index: int32)
 {
-   var low := 0;
-   var high := a.Length;
-   
-   // TODO: implement me!
+   var low := 0 as int32;
+   var high := a.Length as int32;
+   while low < high
+   {
+      var mid := (low + high) / 2;
+      if a[mid] < value
+      {
+         low := mid + 1;
+      }
+      else if value < a[mid]
+      {
+         high := mid;
+      }
+      else
+      {
+         return mid;
+      }
+   }
    return -1;
 }
