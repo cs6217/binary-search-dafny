@@ -4,7 +4,6 @@
 newtype int32 = x | -0x8000_0000 <= x < 0x8000_0000
 
 predicate sorted(a: array<int>)
-   requires a != null
    reads a
 {
    forall j, k :: 0 <= j < k < a.Length ==> a[j] <= a[k]
@@ -12,7 +11,7 @@ predicate sorted(a: array<int>)
 
 method BinarySearchInt32(a: array<int>, value: int) returns (index: int32)
    requires a.Length < 0x8000_0000
-   requires a != null && 0 <= a.Length && sorted(a)
+   requires 0 <= a.Length && sorted(a)
    ensures 0 <= index ==> index < a.Length as int32 && a[index] == value
    ensures index < 0 ==> forall k :: 0 <= k < a.Length ==> a[k] != value
 {
